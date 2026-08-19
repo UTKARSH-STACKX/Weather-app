@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weatherstation — live conditions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-mark">WX·01</span>
+        <span class="brand-name" id="greeting">GOOD MORNING</span>
+      </div>
+      <div class="search-row">
+        <input id="loc" type="text" placeholder="Search a city…" autocomplete="off" aria-label="Search for a location">
+        <button class="icon-btn" id="locate" title="Use my location" aria-label="Use my location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+        </button>
+        <button class="icon-btn go" id="x" title="Search" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div class="unit-toggle" role="group" aria-label="Temperature unit">
+          <button id="unitC" class="active" aria-pressed="true">°C</button>
+          <button id="unitF" aria-pressed="false">°F</button>
+        </div>
+        <div class="clock" id="clockRow">local time — <b id="day">--:--</b></div>
+      </div>
+    </div>
+
+    <div class="error-banner" id="errorBanner"></div>
+
+    <div class="hero" id="heroSection">
+      <div class="panel hero-main">
+        <div class="eyebrow" id="tz">CURRENT CONDITIONS</div>
+        <div class="place" id="location">—</div>
+        <div class="region" id="region">—</div>
+
+        <div class="hero-readout">
+          <div class="icon" id="condIcon"></div>
+          <div class="temp-block">
+            <div class="temp"><span id="temp">--</span><sup id="tempUnit">°C</sup></div>
+            <div class="condition" id="cast">—</div>
+            <div class="feels">FEELS LIKE <span id="feel">--</span><span id="feelUnit">°C</span></div>
+          </div>
+        </div>
+
+        <div class="hilo">
+          <span>HIGH <b id="hiTemp">--°</b></span>
+          <span>LOW <b id="loTemp">--°</b></span>
+          <span>RAIN <b id="rainChance">--%</b></span>
+        </div>
+
+        <div class="astro">
+          <div class="item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 12a5 5 0 10-10 0M2 12h1M21 12h1M12 5V4M4.6 4.6l.7.7M18.7 5.3l.7-.7M2 16h20M4 20h16"/></svg>
+            <span>SUNRISE <b id="sunrise">--:--</b></span>
+          </div>
+          <div class="item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+            <span>SUNSET <b id="sunset">--:--</b></span>
+          </div>
+        </div>
+
+        <div class="recents" id="recents"></div>
+      </div>
+
+      <div class="panel">
+        <div class="eyebrow" style="margin-bottom:12px;">INSTRUMENT CLUSTER</div>
+        <div class="gauges" id="gauges"></div>
+        <div class="aq-row">
+          <div>
+            <div class="aq-label">Air quality · CO <span id="air_quality">--</span> μg/m³</div>
+          </div>
+          <div class="aq-badge" id="aqBadge">—</div>
+        </div>
+        <div class="aq-bar"><div class="marker" id="aqMarker" style="left:0%"></div></div>
+      </div>
+    </div>
+
+    <div class="section-title">24-hour trend</div>
+    <div class="panel chart-panel">
+      <svg id="graph" viewBox="0 0 800 180" preserveAspectRatio="none"></svg>
+    </div>
+
+    <div class="section-title">Next 3 days</div>
+    <div class="forecast" id="forecast"></div>
+
+    <div class="footnote">Data via WeatherAPI · press Enter to search </div>
+  </div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
