@@ -5,7 +5,7 @@
    hourly trend chart, and a 3-day forecast strip.
    ========================================================= */
 
-const API_KEY = "ENTER YOUR API KEY HERE"; // EX: 06b1686ab3625533207
+const API_KEY = .process.env.API_KEY // EX: 06b1686ab3625533207
 const API_BASE = "https://api.weatherapi.com/v1/forecast.json";
 
 // ---------- state ----------
